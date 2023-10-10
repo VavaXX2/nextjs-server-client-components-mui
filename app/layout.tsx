@@ -1,4 +1,10 @@
+import "@/styles/globals.css";
+
 import type { Metadata } from "next";
+
+//fix to make MUI theme and Next.js working together with SSR components
+//https://mui.com/material-ui/guides/next-js-app-router/
+import ThemeRegistry from "./themeRegistry";
 
 export const metadata: Metadata = {
   title: "Server / Client Components with MUI",
@@ -12,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeRegistry options={{ key: "mui" }}>{children}</ThemeRegistry>
+      </body>
     </html>
   );
 }
